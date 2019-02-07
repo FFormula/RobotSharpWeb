@@ -1,0 +1,21 @@
+{
+    "name": "fformula/robot-sharp-web",
+    "description": "Robot Sharp End User Website",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jevgenij Volosatov",
+            "email": "fformula@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "FFormula\\RobotSharpWeb\\" : "src/"
+        }
+    },
+    "require": {
+        "smarty/smarty": "^3.1",
+        "ext-json": "*"
+    }
+}
