@@ -1,0 +1,45 @@
+.card-primary .card-header
+{
+    background: #007bff;
+    color: white;
+}
+.task-text
+{
+    font-family: sans-serif; 
+}
+.example{
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.example .card
+{
+    /* width: 11em; */
+    width: 100%;
+}
+
+.height-100 {
+	height:calc(100vh - 102px) !important;
+}
+
+.example
+{
+    background: black;
+    color: white;
+	border-radius: calc(.25rem - 1px) calc(.25rem - 1px)  calc(.25rem - 1px)  calc(.25rem - 1px);
+}
+
+.example .card .card-body
+{
+    border: 1px solid black;
+}
+.program {
+    background-color: black !important;
+    color: white !important;
+    font-family: monospace;
+    font-size: 15px;
+}
+.righted {
+    right:0px;
+    left:auto;
+}

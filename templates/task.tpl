@@ -11,13 +11,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        <title>Задача № {$task->taskId} : {$task->caption}</title>
+        <title>Задача № {$task->id} : {$task->name}</title>
     </head>
     <body>
 		<div class="navbar mb-4 text-white bg-success">
             <span>
-                Условие задачи № {$task->taskId} ::
-                <strong>{$task->caption}</strong>
+                Условие задачи № {$task->id} ::
+                <strong>{$task->name}</strong>
             </span>
 			<div class="btn-group" style="float:right;">
 				<button id="langButton" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
