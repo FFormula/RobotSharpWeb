@@ -5,7 +5,10 @@ class TaskList extends Page
 {
     public function create(array $get)
     {
-        $tasks = $this->api->call('Task', 'getTaskList');
-        $this->smarty->assign('tasks', $tasks);
+        $tasks = $this->call('Task', 'getTaskList');
+        $this->assign('taskList', $tasks);
+        $title = 'Список задач';
+        $this->assign('head', ['title' => $title]);
+        $this->assign('menu', ['title' => $title]);
     }
 }
