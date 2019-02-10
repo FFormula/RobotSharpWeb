@@ -1,24 +1,24 @@
 <?php
-session_start();
 include '../vendor/autoload.php';
 
-if (isset($_GET['email']))
-{
-    $client = new FFormula\RobotSharpWeb\Api\Client(require '../config/api.php');
-    $login = $client->call('Session', 'login', $_GET);
-    $_SESSION['token'] = $login->token;
-    $_SESSION['userId'] = $login->userId;
-    print_r($login);
-    $url = 'list.php';
-} else {
+$api = new \FFormula\RobotSharpWeb\System\Api(require '../config/api.php');
+$api->setToken('wQ5LW2kKpv4h1R4UTgqI1E3yal89c6S9');
 
-    $partner = 'videosharp';
-    $apikey = 'videosharp';
-    $email = 'robot@videosharp.info';
-    $name = 'Robot Sharp';
-    $time = time();
-    $sign = md5("$partner/$apikey/$time/$email");
-    $url = "index.php?partner=$partner&time=$time&email=$email&sign=$sign&name=$name";
-}
+$smart = new Smarty();
+$smart->setTemplateDir('../templates');
+$smart->setCompileDir('../templates_c');
 
-echo "<a href='$url'>$url</a>";
+$pageName = $_GET['page'];
+$pageClass = '\\FFormula\\RobotSharpWeb\\Page\\' . $pageName;
+if (!class_exists($pageClass))
+    die('class ' . $pageClass . ' does not exists');
+
+/** @var $page \FFormula\RobotSharpWeb\Page\Page */
+$page = new $pageClass();
+
+$page->setApi($api);
+$page->setSmarty($smart);
+
+$page->create($_GET);
+
+$smart->display($pageName . '.tpl');

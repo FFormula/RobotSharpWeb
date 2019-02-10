@@ -11,12 +11,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        <title>Решение № {$task->taskId} : {$task->caption}</title>
+        <title>Решение № {$task->id} : {$task->caption}</title>
     </head>
     <body>
         <div class="navbar mb-4 text-white bg-success">
             <span>
-                Условие задачи № {$task->taskId} :: <strong>{$task->caption}</span></strong>
+                Условие задачи № {$task->id} :: <strong>{$task->caption}</span></strong>
             </span>
             <div class="btn-group" style="float:right;">
                 <button id="langButton" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,7 +34,7 @@
 			<div class="row">
 				<div class="col-9 h-100">
 					<textarea id="source" class="program form-control height-100" rows="22"
-                        >{$prog->source}</textarea>
+                        >{$program->source}</textarea>
 				</div>
 				<div class="col-3">
                     <a href="list.php" class="btn btn-danger btn-block mb-4" title=""><i class="fas fa-play"></i>&nbsp;Запуск</a>
