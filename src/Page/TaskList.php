@@ -7,7 +7,7 @@ class TaskList extends Page
     {
         $tasks = $this->call('Task', 'getTaskList');
         $this->assign('taskList', $tasks);
-        $title = 'Список задач';
+        $title = 'Упражнения';
         $this->assign('head', ['title' => $title]);
         $this->assign('menu', ['title' => $title]);
     }
