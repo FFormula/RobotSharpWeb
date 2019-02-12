@@ -3,12 +3,14 @@ namespace FFormula\RobotSharpWeb\Page;
 
 class TaskList extends Page
 {
-    public function create(array $get)
+    public function create(array $get) : array
     {
-        $tasks = $this->call('Task', 'getTaskList');
-        $this->assign('taskList', $tasks);
+        $tasks = $this->api->call('Task', 'getTaskList');
         $title = 'Упражнения';
-        $this->assign('head', ['title' => $title]);
-        $this->assign('menu', ['title' => $title]);
+        return [
+            'taskList' => $tasks,
+            'head' => ['title' => $title],
+            'menu' => ['title' => $title]
+        ];
     }
 }

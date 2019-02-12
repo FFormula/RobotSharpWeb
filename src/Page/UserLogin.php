@@ -14,6 +14,6 @@ class UserLogin extends Page
                 'sign' => $get['sign']
             ]);
         $this->save('token', $login->token);
-        $this->assign('login', $login);
+        $this->addBox('login', $login);
     }
 }

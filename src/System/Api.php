@@ -31,7 +31,9 @@ class Api
         foreach ($params as $name => $value)
             $this->url .= '&' . $name . '=' . urlencode($value);
 
+        echo "<!-- " . $this->url . " -->";
+
         $json = file_get_contents($this->url);
-        return json_decode($json);
+        return json_decode($json)->answer;
     }
 }

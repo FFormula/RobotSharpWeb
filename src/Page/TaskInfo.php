@@ -10,9 +10,9 @@ class TaskInfo extends Page
         $langs = $this->call('Lang','getLangList');
 
         $title = $task->caption;
-        $this->assign('head', ['title' => $title]);
-        $this->assign('menu', ['title' => $title]);
-        $this->assign('taskInfo', $task);
-        $this->assign('langs', $langs);
+        $this->addBox('head', ['title' => $title]);
+        $this->addBox('menu', ['title' => $title]);
+        $this->addBox('taskInfo', $task);
+        $this->addBox('langs', $langs);
     }
 }
