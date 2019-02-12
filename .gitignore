@@ -1,3 +1,4 @@
 vendor/
 config/api.php
 templates_c/
+log/
