@@ -3,7 +3,6 @@ namespace FFormula\RobotSharpWeb\Page;
 
 use FFormula\RobotSharpWeb\System\Api;
 use FFormula\RobotSharpWeb\System\Session;
-use Psr\Log\LoggerInterface;
 
 abstract class Page
 {
@@ -11,8 +10,6 @@ abstract class Page
     var $api;
     /** @var Session */
     var $ses;
-    /** @var LoggerInterface */
-    var $log;
     /** @var array */
     var $box;
 

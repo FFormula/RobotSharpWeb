@@ -21,7 +21,14 @@ class Api
         $this->token = $token;
     }
 
-    public function call($class, $method, $params = [])
+    /**
+     * @param string $class class to initialize
+     * @param string $method method to call
+     * @param array $params arguments data
+     * @return object an result of API function
+     * @throws \Exception on any API error throw error message
+     */
+    public function call(string $class, string $method, array $params = []) : array
     {
         $this->url = $this->host .
             '&class=' . $class .
@@ -30,10 +37,16 @@ class Api
 
         foreach ($params as $name => $value)
             $this->url .= '&' . $name . '=' . urlencode($value);
-
-        echo "<!-- " . $this->url . " -->";
+        Log::get()->info("Call API: " . $this->url);
 
         $json = file_get_contents($this->url);
-        return json_decode($json)->answer;
+        Log::get()->debug('Answer: ' . $json);
+
+        $result = json_decode($json);
+
+        if ($result->error != 'ok')
+            throw new \Exception($result->error);
+
+        return $result->answer;
     }
 }
