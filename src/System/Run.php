@@ -41,8 +41,13 @@ class Run
         }
         catch (\Exception $ex)
         {
-            Log::get()->error('Display show: ' .
-                $ex->getMessage());
+            Log::get()->error($ex->getMessage());
+            $this->display->load([
+                'error' => [
+                    'message' => $ex->getMessage()
+                ]
+            ]);
+            $this->display->show('Error');
         }
     }
 }

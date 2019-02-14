@@ -30,20 +30,21 @@ class Api
      */
     public function call(string $class, string $method, array $params = []) : object
     {
-        $this->url = $this->host .
+        $url = $this->host .
             '&class=' . $class .
             '&method=' . $method .
             '&token=' . $this->token;
 
         foreach ($params as $name => $value)
-            $this->url .= '&' . $name . '=' . urlencode($value);
-        Log::get()->info('API Call: ' . $this->url);
+            $url .= '&' . $name . '=' . urlencode($value);
+        Log::get()->info('API Call: ' . $url);
 
-        $json = file_get_contents($this->url);
+        $json = @file_get_contents($url);
         Log::get()->debug('API Resp: ' . $json);
+        if ($json === FALSE)
+            throw new \Exception('API Server unreachable: ' . $url);
 
         $result = json_decode($json);
-
         if ($result->error != 'ok')
             throw new \Exception($result->error);
 
