@@ -3,16 +3,26 @@ namespace FFormula\RobotSharpWeb\Page;
 
 class TaskInfo extends Page
 {
-    public function create(array $get)
+    /**
+     * @param array $get
+     *          taskId - task to read
+     * @return array
+     *          page boxes
+     * @throws \Exception
+     *          on api call
+     */
+    public function create(array $get) : array
     {
-        $task = $this->call('Task','getTask',
+        $task = $this->api->call('Task','getTask',
             ['taskId' => $get['taskId']]);
-        $langs = $this->call('Lang','getLangList');
+        $langs = $this->api->call('Lang','getLangList');
 
         $title = $task->caption;
-        $this->addBox('head', ['title' => $title]);
-        $this->addBox('menu', ['title' => $title]);
-        $this->addBox('taskInfo', $task);
-        $this->addBox('langs', $langs);
+        return [
+            'head' => ['title' => $title],
+            'menu' => ['title' => $title],
+            'taskInfo' => $task,
+            'langs' => $langs
+        ];
     }
 }

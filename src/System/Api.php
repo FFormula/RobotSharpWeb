@@ -28,7 +28,7 @@ class Api
      * @return object an result of API function
      * @throws \Exception on any API error throw error message
      */
-    public function call(string $class, string $method, array $params = []) : array
+    public function call(string $class, string $method, array $params = []) : object
     {
         $this->url = $this->host .
             '&class=' . $class .
@@ -37,16 +37,16 @@ class Api
 
         foreach ($params as $name => $value)
             $this->url .= '&' . $name . '=' . urlencode($value);
-        Log::get()->info("Call API: " . $this->url);
+        Log::get()->info('API Call: ' . $this->url);
 
         $json = file_get_contents($this->url);
-        Log::get()->debug('Answer: ' . $json);
+        Log::get()->debug('API Resp: ' . $json);
 
         $result = json_decode($json);
 
         if ($result->error != 'ok')
             throw new \Exception($result->error);
 
-        return $result->answer;
+        return (object)$result->answer;
     }
 }

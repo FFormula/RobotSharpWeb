@@ -3,9 +3,21 @@ namespace FFormula\RobotSharpWeb\Page;
 
 class UserLogin extends Page
 {
-    public function create(array $get)
+    /**
+     * Login or Join user and store api-token
+     * @param array $get
+     *          email
+     *          name
+     *          partner
+     *          sign
+     * @return array
+     *          page boxes
+     * @throws \Exception
+     *          on api call
+     */
+    public function create(array $get) : array
     {
-        $login = $this->call('Session', 'login',
+        $login = $this->api->call('Session', 'login',
             [
                 'email' => $get['email'],
                 'name' => $get['name'],
@@ -13,7 +25,9 @@ class UserLogin extends Page
                 'time' => time(),
                 'sign' => $get['sign']
             ]);
-        $this->save('token', $login->token);
-        $this->addBox('login', $login);
+        $this->ses->save('token', $login->token);
+        return [
+            'login' => $login
+        ];
     }
 }

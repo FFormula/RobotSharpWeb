@@ -20,7 +20,10 @@ class Display
     public function load(array $box)
     {
         foreach ($box as $name => $data)
+        {
             $this->smart->assign($name, (object)$data);
+            Log::get()->debug('Box ' . $name . ': ' . json_encode($data));
+        }
     }
 
     /**

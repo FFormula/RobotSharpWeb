@@ -4,7 +4,7 @@ if (!isset($path)) $path = '../';
 include $path . 'vendor/autoload.php';
 
 FFormula\RobotSharpWeb\System\Log::set(
-    new Monolog\Logger('RobotSharpWeb',
+    new Monolog\Logger('RobotWeb',
    [new Monolog\Handler\StreamHandler($path . '/log/web.log', Monolog\Logger::DEBUG)]));
 
 $run = new FFormula\RobotSharpWeb\System\Run();

@@ -13,9 +13,9 @@ class Run
     {
         try
         {
-            Log::get()->info('================================');
+            $url = $_SERVER['REQUEST_URI'] . $_SERVER['QUERY_STRING'];
+            Log::get()->info('======== ' . $url);
             Log::get()->info('IP: ' . $_SERVER['REMOTE_ADDR']);
-            Log::get()->info('Request: ' . $_SERVER['REQUEST_URI'] . $_SERVER['QUERY_STRING']);
 
             $this->api->setToken($this->ses->load('token'));
 
