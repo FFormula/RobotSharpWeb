@@ -1,4 +1,3 @@
-	<div class="col-9 h-100">
 		<div class="row">
 			<div class="col-12">
 				<strong>Условие задачи</strong>
@@ -7,7 +6,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="task-text">
-					<pre>{$taskDescription->description}</pre>
+					{$taskDescription->description}
 				</div>
 			</div>
 		</div>
@@ -19,4 +18,3 @@
 				</div>
 			</div>
 		</div-->
-	</div>

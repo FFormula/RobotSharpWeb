@@ -1,7 +1,7 @@
 <?php
 namespace FFormula\RobotSharpWeb\Page;
 
-class TaskInfo extends Page
+class TaskCode extends Page
 {
     /**
      * @param array $get
@@ -17,6 +17,8 @@ class TaskInfo extends Page
             ['taskId' => $get['taskId']]);
         $test = $this->api->call('Test','getDemoTest',
             ['taskId' => $get['taskId']]);
+        $prog = $this->api->call('Program', 'getProgram',
+            ['taskId' => $get['taskId'], 'langId' => 'cs']);
 
         //$langs = $this->api->call('Lang','getLangList');
 
@@ -27,13 +29,8 @@ class TaskInfo extends Page
                 'title' => $title,
                 'userName' => $this->ses->load('userName')
             ],
-            'taskDescription' => [
-                'id' => $task->id,
-                'video' => $task->video,
-                'description' => $this->ah($task->description)
-            ],
-            'taskCodeButton' => [
-                'taskId' => $get['taskId']
+            'userSourceEditor' => [
+                'source' => $prog->source
             ],
             'taskTest' => [
                 'taskId' => $test->taskId,

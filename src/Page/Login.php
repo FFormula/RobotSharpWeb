@@ -12,14 +12,18 @@ class Login extends Page
      *          name
      * @return array
      *          page boxes data
-     * @throws \Exception
-     *          on api error
      */
     public function create(array $get): array
     {
-        try {
+        try
+        {
             $login = $this->api->call('Session', 'login', $get);
-        } catch (\Exception $ex) {
+            $this->ses->save('token', $login->token);
+            $this->ses->save('userId', $login->userId);
+            $this->ses->save('userName', $get['name']);
+        }
+        catch (\Exception $ex)
+        {
             $error = $ex->getMessage();
         }
         return [

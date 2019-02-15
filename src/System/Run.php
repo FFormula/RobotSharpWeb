@@ -1,14 +1,15 @@
 <?php
 namespace FFormula\RobotSharpWeb\System;
 
-use Monolog\Logger;
-
 class Run
 {
     /** @var Session */ var $ses;
     /** @var Api     */ var $api;
     /** @var Display */ var $display;
 
+    /**
+     * @param array $get
+     */
     public function create(array $get)
     {
         try
@@ -20,7 +21,7 @@ class Run
             $this->api->setToken($this->ses->load('token'));
 
             if ($get['page'])
-                $pageName = $get['page'];
+                $pageName = $this->az($get['page']);
             else
                 $pageName = 'TaskList';
 
@@ -36,6 +37,7 @@ class Run
             $page->api = $this->api;
 
             $box = $page->create($get);
+            log::get()->debug('Session: ' . json_encode($this->ses->loadAll()));
             $this->display->load($box);
             $this->display->show($pageName);
         }
@@ -47,7 +49,13 @@ class Run
                     'message' => $ex->getMessage()
                 ]
             ]);
-            $this->display->show('Error');
+            try {$this->display->show('Error');}
+            catch (\Exception $ex) { die ($ex->getMessage() . $ex->getTraceAsString()); }
         }
+    }
+
+    protected function az(string $text) : string
+    {
+        return preg_replace('/[^a-zA-Z0-9_]+/', '', $text);
     }
 }

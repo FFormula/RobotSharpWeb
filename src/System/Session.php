@@ -20,4 +20,9 @@ class Session
             return $_SESSION[$name];
         return '';
     }
+
+    public function loadAll() : array
+    {
+        return $_SESSION;
+    }
 }

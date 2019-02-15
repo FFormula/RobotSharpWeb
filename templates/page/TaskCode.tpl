@@ -2,8 +2,13 @@
 {include file='box/menu.tpl'}
 <div class="container-fluid px-4">
     <div class="row">
-        {include file='box/taskDescription.tpl'}
-        {include file='box/taskTest.tpl'}
+        <div class="col-9 h-100">
+            {include file='box/userSourceEditor.tpl'}
+        </div>
+        <div class="col-3">
+            {include file='box/taskRunButton.tpl'}
+            {include file='box/taskTest.tpl'}
+        </div>
     </div>
 </div>
 {include file='box/tail.tpl'}

@@ -19,7 +19,10 @@ class TaskList extends Page
         return [
             'taskList' => $tasks,
             'head' => ['title' => $title],
-            'menu' => ['title' => $title]
+            'menu' => [
+                'title' => $title,
+                'userName' => $this->ses->load('userName')
+            ]
         ];
     }
 }
