@@ -12,4 +12,4 @@ $run->ses = new FFormula\RobotSharpWeb\System\Session();
 $run->api = new FFormula\RobotSharpWeb\System\Api(require $path . 'config/api.php');
 $run->display = new FFormula\RobotSharpWeb\System\Display($path);
 
-$run->create($_GET);
+$run->create($_REQUEST);

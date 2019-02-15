@@ -24,15 +24,16 @@ class TaskCode extends Page
         $prog = $this->api->call('Program', 'getProgram',
             ['taskId' => $get['taskId'], 'langId' => $langList['langId']]);
 
-        $title = $task->caption;
         return [
-            'head' => ['title' => $title],
+            'head' => ['title' => $task->caption],
             'menu' => [
-                'title' => $title,
+                'title' => $task->caption,
                 'userName' => $this->ses->load('userName')
             ],
             'langList' => $langList,
             'userSourceEditor' => [
+                'taskId' => $get['taskId'],
+                'langId' => $langList['langId'],
                 'source' => $prog->source
             ],
             'taskTest' => [

@@ -1,2 +1,3 @@
-<a href="?page=TaskCode&taskId={$taskRunButton->taskId}"
-   class="btn btn-danger btn-block mb-4">Run program</a>
+<a href="#"
+   class="btn btn-danger btn-block mb-4"
+   onclick="document.runForm.submit(); return false;">Run program</a>
