@@ -19,7 +19,7 @@
 }
 
 .height-100 {
-	height:calc(100vh - 102px) !important;
+	height:calc(100vh - 150px) !important;
 }
 
 .example
@@ -40,6 +40,6 @@
     font-size: 15px;
 }
 .righted {
-    right:0px;
+    right:0;
     left:auto;
 }
