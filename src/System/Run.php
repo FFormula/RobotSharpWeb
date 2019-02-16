@@ -14,10 +14,6 @@ class Run
     {
         try
         {
-            $url = $_SERVER['REQUEST_URI'] . $_SERVER['QUERY_STRING'];
-            Log::get()->info('======== ' . $url);
-            Log::get()->info('IP: ' . $_SERVER['REMOTE_ADDR']);
-
             $this->api->setToken($this->ses->load('token'));
 
             if ($get['page'])
@@ -50,7 +46,7 @@ class Run
                 ]
             ]);
             try {$this->display->show('Error');}
-            catch (\Exception $ex) { die ($ex->getMessage() . $ex->getTraceAsString()); }
+            catch (\Exception $ex) { die($ex->getMessage() . $ex->getTraceAsString()); }
         }
     }
 

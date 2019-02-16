@@ -9,9 +9,9 @@ namespace FFormula\RobotSharpWeb\System;
 class Api
 {
     /** @var string - Интернет-адрес скрипта RestAPI-сервера */
-    var $host;
+    private $host;
     /** @var string - Клиентский ключ для выполнения запросов */
-    var $token;
+    private $token;
 
     /**
      * Api constructor - инициализация класса

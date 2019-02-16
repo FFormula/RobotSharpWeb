@@ -9,7 +9,7 @@ namespace FFormula\RobotSharpWeb\System;
 class Display
 {
     /** @var \Smarty - шаблонизатор*/
-    var $smart;
+    private $smart;
 
     /**
      * Display constructor - создание и насторйка шаблонизатора Smarty
@@ -37,7 +37,7 @@ class Display
      * @param string $name - имя подстраницы
      * @param $data - массив или объект для передачи в подстраницу
      */
-    public function assignBox(string $name, $data) : void
+    private function assignBox(string $name, $data) : void
     {
         $this->smart->assign($name, (object)$data);
         Log::get()->debug('Box ' . $name . ': ' . json_encode($data));
