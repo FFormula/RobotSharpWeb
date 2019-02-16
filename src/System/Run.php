@@ -38,13 +38,13 @@ class Run
 
             $box = $page->create($get);
             log::get()->debug('Session: ' . json_encode($this->ses->loadAll()));
-            $this->display->load($box);
+            $this->display->assign($box);
             $this->display->show($pageName);
         }
         catch (\Exception $ex)
         {
             Log::get()->error($ex->getMessage());
-            $this->display->load([
+            $this->display->assign([
                 'error' => [
                     'message' => $ex->getMessage()
                 ]

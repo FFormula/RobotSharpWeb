@@ -2,31 +2,47 @@
 
 namespace FFormula\RobotSharpWeb\System;
 
+/**
+ * Class Api - Клиент для подключения к RobotSharp Rest API
+ * @package FFormula\RobotSharpWeb\System
+ */
 class Api
 {
-    /** @var string */
-    var $url;
-    /** @var string */
+    /** @var string - Интернет-адрес скрипта RestAPI-сервера */
     var $host;
-    /** @var string */
+    /** @var string - Клиентский ключ для выполнения запросов */
     var $token;
 
+    /**
+     * Api constructor - инициализация класса
+     * @param array $config - настройки класса
+     *          host - адрес скрипта RestAPI-сервера
+     */
     public function __construct(array $config)
     {
         $this->host = $config['host'];
     }
 
-    public function setToken(string $token)
+    /**
+     * Установка клиентского ключа для RestAPI запросов
+     * @param string $token - Клиентский ключ для выполнения запросов
+     * Этот ключ сообщает сервер во время авторизации
+     * Его необходимо передавать для всех последующих запросов
+     * Срок действия ключа ограничен, например, 24 часа
+     */
+    public function setToken(string $token) : void
     {
         $this->token = $token;
     }
 
     /**
-     * @param string $class class to initialize
-     * @param string $method method to call
-     * @param array $params arguments data
-     * @return object an result of API function
-     * @throws \Exception on any API error throw error message
+     * Выполнение запроса к RobotSharp RestAPI
+     * и получение ответа в json-формате
+     * @param string $class - с каким классом работаем
+     * @param string $method - какой метод вызываем
+     * @param array $params - начальные данные в линейном массиве
+     * @return object - результат выполненного запроса к RestAPI
+     * @throws \Exception - Будет сгенерировано исключение при любой ошибке в ответе RestAPI сервера.
      */
     public function call(string $class, string $method, array $params = []) : object
     {
@@ -39,6 +55,7 @@ class Api
             $url .= '&' . $name . '=' . urlencode($value);
         Log::get()->info('API Call: ' . $url);
 
+        // @ Вместо Warning-сообщения от PHP - проверка ответа и генерация исключения
         $json = @file_get_contents($url);
         Log::get()->debug('API Resp: ' . $json);
         if ($json === FALSE)
@@ -48,6 +65,8 @@ class Api
         if ($result->error != 'ok')
             throw new \Exception($result->error);
 
+        // иногда ответ приходит как массив, иногда как объект
+        // для унифицированности возвращаем в виде объекта
         return (object)$result->answer;
     }
 }
