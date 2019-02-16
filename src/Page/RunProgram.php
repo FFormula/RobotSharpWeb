@@ -13,12 +13,14 @@ class RunProgram extends Page
     public function create(array $get): array
     {
         Log::get()->debug(json_encode($get));
-        $this->api->call('Program', 'runProgram',
+        $run = $this->api->call('Program', 'runProgram',
             [
                 'taskId' => $get['taskId'],
                 'langId' => $get['langId'],
                 'source' => $get['source']
             ]);
-        return [];
+        return [
+            'RunProgram' => ['message' => $run->runkey]
+        ];
     }
 }
