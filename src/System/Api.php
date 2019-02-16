@@ -62,6 +62,9 @@ class Api
             throw new \Exception('API Server unreachable: ' . $url);
 
         $result = json_decode($json);
+        if (json_last_error() != JSON_ERROR_NONE)
+            throw new \Exception($json);
+
         if ($result->error != 'ok')
             throw new \Exception($result->error);
 
