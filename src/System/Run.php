@@ -10,7 +10,7 @@ class Run
     /**
      * @param array $get
      */
-    public function create(array $get)
+    public function create(array $get) : void
     {
         try
         {

@@ -17,7 +17,7 @@ class Login extends Page
     {
         try
         {
-            $login = $this->api->call('Session', 'login', $get);
+            $login = $this->api->call('Login', 'getUserToken', $get);
             $this->ses->save('token', $login->token);
             $this->ses->save('userId', $login->userId);
             $this->ses->save('userName', $get['name']);
