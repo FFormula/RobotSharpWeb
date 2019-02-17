@@ -4,7 +4,7 @@ namespace FFormula\RobotSharpWeb\System;
 class Run
 {
     /** @var Session */ var $ses;
-    /** @var Api     */ var $api;
+    /** @var ApiClient     */ var $api;
     /** @var Display */ var $display;
 
     /**

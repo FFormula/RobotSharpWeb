@@ -1,5 +1,9 @@
+<pre>Running program ... {$RunProgram->runkey}</pre>
 <script>
-    var message = '{$RunProgram->message}';
-    if (message.length > 0)
-        alert(message);
+    function getResults()
+    {
+        document.location =
+            '/?page=RunResults&runkey={$RunProgram->runkey}';
+    }
+    setTimeout(getResults, 5000);
 </script>

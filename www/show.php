@@ -14,7 +14,7 @@ System\Log::get()->info('Request: ' . $_SERVER['REQUEST_URI'] . $_SERVER['QUERY_
 
 $run = new System\Run();
 $run->ses = new System\Session();
-$run->api = new System\Api(require $path . 'config/api.php');
+$run->api = new System\ApiClient(require $path . 'config/api.php');
 $run->display = new System\Display($path);
 
 $run->create($_REQUEST);

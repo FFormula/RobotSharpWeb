@@ -20,7 +20,7 @@ class RunProgram extends Page
                 'source' => $get['source']
             ]);
         return [
-            'RunProgram' => ['message' => $run->runkey]
+            'RunProgram' => ['runkey' => $run->runkey]
         ];
     }
 }

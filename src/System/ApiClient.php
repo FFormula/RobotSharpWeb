@@ -3,10 +3,10 @@
 namespace FFormula\RobotSharpWeb\System;
 
 /**
- * Class Api - Клиент для подключения к RobotSharp Rest API
+ * Class ApiClient - Клиент для подключения к RobotSharp Rest API
  * @package FFormula\RobotSharpWeb\System
  */
-class Api
+class ApiClient
 {
     /** @var string - Интернет-адрес скрипта RestAPI-сервера */
     private $host;
@@ -65,11 +65,14 @@ class Api
         if (json_last_error() != JSON_ERROR_NONE)
             throw new \Exception($json);
 
-        if ($result->error != 'ok')
+        if ($result->error)
             throw new \Exception($result->error);
 
         // иногда ответ приходит как массив, иногда как объект
         // для унифицированности возвращаем в виде объекта
-        return (object)$result->answer;
+        if ($result->answer)
+            return (object)$result->answer;
+
+        throw new \Exception($result);
     }
 }

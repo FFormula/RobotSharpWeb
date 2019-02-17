@@ -4,4 +4,4 @@
     <textarea id="program" name="source" class="program form-control height-100"
     >{$userSourceEditor->source}</textarea>
 </form>
-<iframe name="runFrame"></iframe>
+<iframe name="runFrame" style="width: 100%; height: 200px"></iframe>
