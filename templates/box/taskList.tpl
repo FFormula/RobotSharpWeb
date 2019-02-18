@@ -5,6 +5,7 @@
                 <th class="text-center">№</th>
                 <th>Раздел</th>
                 <th>Задача</th>
+                <th>Points</th>
             </tr>
             </thead>
             <tbody>
@@ -22,6 +23,9 @@
                         <a href="index.php?page=TaskInfo&taskId={$task->id}" title="Открыть условие">
                             {$task->caption}
                         </a>
+                    </td>
+                    <td>
+                        {$task->points}
                     </td>
                 </tr>
             {/foreach}
