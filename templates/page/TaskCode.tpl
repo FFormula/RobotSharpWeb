@@ -11,6 +11,7 @@
         </div>
         <div class="col-3">
             {include file='box/taskRunButton.tpl'}
+            {include file='box/taskTestButtons.tpl'}
             {include file='box/taskTest.tpl'}
         </div>
     </div>

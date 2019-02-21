@@ -24,6 +24,9 @@ class TaskCode extends Page
         $prog = $this->api->call('Program', 'getProgram',
             ['taskId' => $get['taskId'], 'langId' => $langList['langId']]);
 
+        $tests = $this->api->call('Test', 'getAllTests',
+            ['taskId' => $get['taskId']]);
+
         return [
             'head' => ['title' => $task->caption],
             'menu' => [
@@ -42,7 +45,8 @@ class TaskCode extends Page
                 'fileOut' => trim($test->fileOut),
                 'fileInRows' => $test->fileInRows,
                 'fileOutRows' => $test->fileOutRows
-            ]
+            ],
+            'taskTestButtons' => $tests
         ];
     }
 

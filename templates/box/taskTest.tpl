@@ -1,6 +1,6 @@
         <div class="col-12 example mb-4">
             <div class="card-header">
-                <label for="fileIn">Пример</label>
+                <label for="fileIn">Начальные данные</label>
             </div>
             <textarea id="fileIn" class="form-control text-white bg-info" rows="{$taskTest->fileInRows}"
                 >{$taskTest->fileIn}</textarea>
