@@ -18,36 +18,63 @@ class TaskCode extends Page
         $task = $this->api->call('Task','getTask',
             ['taskId' => $get['taskId']]);
 
-        $test = $this->api->call('Test','getDemoTest',
-            ['taskId' => $get['taskId']]);
-
         $prog = $this->api->call('Program', 'getProgram',
             ['taskId' => $get['taskId'], 'langId' => $langList['langId']]);
 
-        $tests = $this->api->call('Test', 'getAllTests',
-            ['taskId' => $get['taskId']]);
+        if ($prog->status == "tests")
+        {
+            return [
+                'TaskCode' => [
+                    'status' => $prog->status,
+                    'caption' => 'Points: ' . $prog->points . ' %'
+                ],
+                'head' => [
+                    'title' => $task->caption
+                ],
+                'menu' => [
+                    'title' => $task->caption,
+                    'userName' => $this->ses->load('userName')
+                ],
+                'langList' => $langList,
+                'userSourceEditor' => [
+                    'taskId' => $get['taskId'],
+                    'langId' => $langList['langId'],
+                    'source' => $prog->source
+                ],
+                'taskTestButtons' => $prog->tests
+            ];
 
-        return [
-            'head' => ['title' => $task->caption],
-            'menu' => [
-                'title' => $task->caption,
-                'userName' => $this->ses->load('userName')
-            ],
-            'langList' => $langList,
-            'userSourceEditor' => [
-                'taskId' => $get['taskId'],
-                'langId' => $langList['langId'],
-                'source' => $prog->source
-            ],
-            'taskTest' => [
-                'taskId' => $test->taskId,
-                'fileIn' => trim($test->fileIn),
-                'fileOut' => trim($test->fileOut),
-                'fileInRows' => $test->fileInRows,
-                'fileOutRows' => $test->fileOutRows
-            ],
-            'taskTestButtons' => $tests
-        ];
+        } else {
+
+            if ($prog->status == 'run')
+                $caption = 'Your Program is checking now';
+            else
+                $caption = 'Write and run your Program';
+
+            return [
+                'TaskCode' => [
+                    'status' => $prog->status,
+                    'caption' => $caption
+                ],
+                'compileError' => [
+                    'status' => $prog->status,
+                    'compiler' => $prog->compiler
+                ],
+                'head' => [
+                    'title' => $task->caption
+                ],
+                'menu' => [
+                    'title' => $task->caption,
+                    'userName' => $this->ses->load('userName')
+                ],
+                'langList' => $langList,
+                'userSourceEditor' => [
+                    'taskId' => $get['taskId'],
+                    'langId' => $langList['langId'],
+                    'source' => $prog->source
+                ],
+            ];
+        }
     }
 
     /**
