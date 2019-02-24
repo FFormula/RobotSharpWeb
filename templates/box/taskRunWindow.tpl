@@ -27,7 +27,7 @@
         counter --;
         document.getElementById('counter').innerHTML = counter;
         if (counter <= 0)
-            document.location.reload();
+            location.reload();
     }
 
     function showRunWindow()
