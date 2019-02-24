@@ -21,60 +21,59 @@ class TaskCode extends Page
         $prog = $this->api->call('Program', 'getProgram',
             ['taskId' => $get['taskId'], 'langId' => $langList['langId']]);
 
-        if ($prog->status == "tests")
-        {
-            return [
-                'TaskCode' => [
-                    'status' => $prog->status,
-                    'caption' => 'Points: ' . $prog->points . ' %'
-                ],
-                'head' => [
-                    'title' => $task->caption
-                ],
-                'menu' => [
-                    'title' => $task->caption,
-                    'userName' => $this->ses->load('userName')
-                ],
-                'langList' => $langList,
-                'userSourceEditor' => [
-                    'taskId' => $get['taskId'],
-                    'langId' => $langList['langId'],
-                    'source' => $prog->source
-                ],
-                'taskTestButtons' => $prog->tests
-            ];
+        if ($prog->status == 'run')
+            $caption = 'Ваша программа ещё тестируется';
+        else if ($prog->status == 'compiler')
+            $caption = 'Ошибка при компиляции вашей программы';
+        else if ($prog->status == 'tests')
+            $caption = 'Результат тестирования: ' . $prog->points . ' %';
+        else
+            $caption = 'Напишите программу для решения задачи';
 
-        } else {
-
-            if ($prog->status == 'run')
-                $caption = 'Your Program is checking now';
+        if ($prog->status == 'run')
+            $captionBg = 'primary';
+        else if ($prog->status == 'compiler')
+            $captionBg = 'danger';
+        else if ($prog->status == 'tests')
+            if ($prog->points >= 100)
+                $captionBg = 'success';
+            else if ($prog->points >= 50)
+                $captionBg = 'warning';
             else
-                $caption = 'Write and run your Program';
+                $captionBg = 'danger';
+        else
+            $captionBg = 'default';
 
-            return [
-                'TaskCode' => [
-                    'status' => $prog->status,
-                    'caption' => $caption
-                ],
-                'compileError' => [
-                    'status' => $prog->status,
-                    'compiler' => $prog->compiler
-                ],
-                'head' => [
-                    'title' => $task->caption
-                ],
-                'menu' => [
-                    'title' => $task->caption,
-                    'userName' => $this->ses->load('userName')
-                ],
-                'langList' => $langList,
-                'userSourceEditor' => [
-                    'taskId' => $get['taskId'],
-                    'langId' => $langList['langId'],
-                    'source' => $prog->source
-                ],
-            ];
-        }
+        return [
+            'TaskCode' => [
+                'showTests' => $prog->status == 'tests',
+                'caption' => $caption,
+                'captionBg' => $captionBg
+            ],
+            'head' => [
+                'title' => $task->caption
+            ],
+            'menu' => [
+                'title' => $task->caption,
+                'userName' => $this->ses->load('userName')
+            ],
+            'langList' => $langList,
+            'taskCompilerError' => [
+                'compiler' => $prog->compiler
+            ],
+            'userSourceEditor' => [
+                'taskId' => $get['taskId'],
+                'langId' => $langList['langId'],
+                'source' => $prog->source
+            ],
+            'taskTestButtons' => json_decode($prog->tests),
+            'taskTest' => [
+                'fileIn' => '',
+                'fileOut' => '',
+                'fileInRows' => 5,
+                'fileOutRows' => 5
+            ]
+        ];
     }
 
     /**
