@@ -2,31 +2,24 @@
 {include file='box/menu.tpl'}
 <div class="container-fluid px-4">
     <div class="row">
-    {if $TaskCode->status == "tests"}
-        <div class="col-9 h-100">
-            <h3>{$TaskCode->caption}</h3>
-            <div class="btn-group righted" style="float:right;">
+        <div class="col-{if $TaskCode->showTests}8{else}12{/if} h-100">
+            <div class="btn-group">
                 {include file='box/langList.tpl'}
+                &nbsp;
                 {include file='box/taskRunButton.tpl'}
+                &nbsp;
+                <a href="#" class="btn btn-{$TaskCode->captionBg}">{$TaskCode->caption}</a>
             </div>
+            {include file='box/taskCompilerError.tpl'}
             {include file='box/userSourceEditor.tpl'}
         </div>
-        <div class="col-3">
+        {if $TaskCode->showTests}
+        <div class="col-4">
             {include file='box/taskTestButtons.tpl'}
             {include file='box/taskTest.tpl'}
         </div>
-    {else}
-        <div class="col-12 h-100">
-            {include file='box/compileError.tpl'}
-            <div class="btn-group">
-                {include file='box/taskRunButton.tpl'}
-            </div>
-            <div class="btn-group righted" style="float:right;">
-                {include file='box/langList.tpl'}
-            </div>
-            {include file='box/userSourceEditor.tpl'}
-        </div>
-    {/if}
+        {/if}
     </div>
 </div>
+{include file='box/taskRunWindow.tpl'}
 {include file='box/tail.tpl'}
