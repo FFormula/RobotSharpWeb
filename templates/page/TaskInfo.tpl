@@ -2,10 +2,10 @@
 {include file='box/menu.tpl'}
 <div class="container-fluid px-4">
     <div class="row">
-        <div class="col-9 h-100">
+        <div class="col-8 h-100">
             {include file='box/taskDescription.tpl'}
         </div>
-        <div class="col-3">
+        <div class="col-4">
             {include file='box/taskCodeButton.tpl'}
             {include file='box/taskTest.tpl'}
         </div>

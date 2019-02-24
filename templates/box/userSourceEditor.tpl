@@ -17,4 +17,4 @@
         }
     </script>
 </form>
-<iframe name="runFrame" style="width: 100%; height: 200px"></iframe>
+<iframe name="runFrame" style="display: none; width: 100%; height: 200px"></iframe>

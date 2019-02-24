@@ -8,7 +8,8 @@
                 &nbsp;
                 {include file='box/taskRunButton.tpl'}
                 &nbsp;
-                <a href="#" class="btn btn-{$TaskCode->captionBg}">{$TaskCode->caption}</a>
+                <a href="#" {if $TaskCode->status == 'run'}onclick="document.location.reload();"{/if}
+                   class="btn btn-{$TaskCode->captionBg}">{$TaskCode->caption}</a>
             </div>
             {include file='box/taskCompilerError.tpl'}
             {include file='box/userSourceEditor.tpl'}
