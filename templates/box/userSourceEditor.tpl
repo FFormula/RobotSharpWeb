@@ -1,5 +1,6 @@
 <form name="runForm" method="post" target="runFrame"
       action="/?page=RunProgram&taskId={$userSourceEditor->taskId}&langId={$userSourceEditor->langId}">
+    <input type="hidden" id="mode" name="mode" value="run" />
     <label for="program"></label>
     <textarea id="program" name="source" class="program form-control height-100"
     >{$userSourceEditor->source}</textarea>
@@ -14,6 +15,7 @@
                              this.value.substring(   this.selectionEnd);
                 this.selectionEnd = s + 4;
             }
+            document.getElementById('saveButton').innerHTML = 'Сохранить';
         }
     </script>
 </form>

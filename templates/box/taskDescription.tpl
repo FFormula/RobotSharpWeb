@@ -1,6 +1,6 @@
 		<div class="row">
 			<div class="col-12">
-				<strong>Условие задачи</strong>
+				<br/><h3>Условие задачи</h3>
 			</div>
 		</div>
 		<div class="row">

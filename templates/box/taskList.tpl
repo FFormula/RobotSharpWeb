@@ -5,7 +5,7 @@
                 <th class="text-center">№</th>
                 <th>Раздел</th>
                 <th>Задача</th>
-                <th>Points</th>
+                <th>Результат</th>
             </tr>
             </thead>
             <tbody>

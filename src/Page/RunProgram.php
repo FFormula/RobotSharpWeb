@@ -17,10 +17,11 @@ class RunProgram extends Page
             [
                 'taskId' => $get['taskId'],
                 'langId' => $get['langId'],
-                'source' => $get['source']
+                'source' => $get['source'],
+                'mode' => $get['mode']
             ]);
         return [
-            'RunProgram' => ['runkey' => $run->runkey]
+            'RunProgram' => $run
         ];
     }
 }

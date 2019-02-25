@@ -66,6 +66,10 @@ class TaskCode extends Page
                 'langId' => $langList['langId'],
                 'source' => $prog->source
             ],
+            'taskInfoButton' => [
+                'taskId' => $get['taskId'],
+                'langId' => $langList['langId']
+            ],
             'taskTestButtons' => json_decode($prog->tests),
             'taskTest' => [
                 'fileIn' => '',

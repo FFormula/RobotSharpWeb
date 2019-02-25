@@ -1,4 +1,7 @@
 <pre>Running program ... {$RunProgram->runkey}</pre>
 <script>
-    parent.showRunWindow();
+    if ('{$RunProgram->status}' === 'run')
+        parent.showRunWindow();
+    else
+        parent.saved();
 </script>

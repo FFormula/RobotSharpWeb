@@ -4,7 +4,11 @@
     <div class="row">
         <div class="col-{if $TaskCode->showTests}8{else}12{/if} h-100">
             <div class="btn-group">
+                {include file='box/taskInfoButton.tpl'}
+                &nbsp;
                 {include file='box/langList.tpl'}
+                &nbsp;
+                {include file='box/taskSaveButton.tpl'}
                 &nbsp;
                 {include file='box/taskRunButton.tpl'}
                 &nbsp;
