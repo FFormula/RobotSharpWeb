@@ -25,6 +25,9 @@ class Login extends Page
         catch (\Exception $ex)
         {
             $error = $ex->getMessage();
+            $login = new \stdClass();
+            $login->userId = '';
+            $login->partnerInfo = '';
         }
         return [
             'menu' => ['title' => 'User Login'],
