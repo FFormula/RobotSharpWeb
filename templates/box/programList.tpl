@@ -6,7 +6,6 @@
             <th>Участник</th>
             <th>Задача</th>
             <th>Язык</th>
-            <th>Запуски</th>
             <th>Результат</th>
         </tr>
         </thead>
@@ -20,13 +19,10 @@
                     {$prog->partnerName} / {$prog->userName}
                 </td>
                 <td>
-                    {$prog->caption}
+                    <a href="?page=TaskInfo&taskId={$prog->taskId}">{$prog->caption}</a>
                 </td>
                 <td>
-                    {$prog->lang}
-                </td>
-                <td>
-                    {$prog->runs}
+                    <a href="?page=TaskCode&taskId={$prog->taskId}&langId={$prog->langId}">{$prog->lang}</a>
                 </td>
                 <td>
                     {if $prog->status == 'tests'}
@@ -36,7 +32,9 @@
                             <span class="badge badge-warning badge-pill">{$prog->points}%</span>
                         {/if}
                     {else}
-                        {$prog->status}
+                        {if $prog->status == 'new'}coding{/if}
+                        {if $prog->status == 'run'}running{/if}
+                        {if $prog->status == 'compiler'}compile error{/if}
                     {/if}
                 </td>
             </tr>
@@ -44,4 +42,5 @@
         </tbody>
     </table>
 </div>
+
 
