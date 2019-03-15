@@ -38,6 +38,12 @@
                     {/if}
                 </td>
             </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="4">
+                    <pre>{$prog->source}</pre>
+                </td>
+            </tr>
         {/foreach}
         </tbody>
     </table>

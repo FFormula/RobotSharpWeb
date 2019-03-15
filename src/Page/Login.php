@@ -33,6 +33,7 @@ class Login extends Page
             'menu' => ['title' => 'User Login'],
             'login' => [
                 'userId' => $login->userId,
+                'token' => $login->token,
                 'email' => $get['email'],
                 'name' => $get['name'],
                 'partnerInfo' => $get['partner'] . ' / ' . $login->partnerInfo,

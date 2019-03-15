@@ -8,8 +8,6 @@
                 &nbsp;
                 {include file='box/langList.tpl'}
                 &nbsp;
-                {include file='box/taskSaveButton.tpl'}
-                &nbsp;
                 {include file='box/taskRunButton.tpl'}
                 &nbsp;
                 <a href="#" {if $TaskCode->status == 'run'}onclick="document.location.reload();"{/if}

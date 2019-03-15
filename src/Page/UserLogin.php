@@ -25,6 +25,7 @@ class UserLogin extends Page
                 'time' => time(),
                 'sign' => $get['sign']
             ]);
+        var_dump($login);
         $this->ses->save('token', $login->token);
         return [
             'login' => $login

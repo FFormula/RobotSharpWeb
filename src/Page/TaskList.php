@@ -15,7 +15,7 @@ class TaskList extends Page
     public function create(array $get) : array
     {
         $tasks = $this->api->call('Task', 'getTaskList');
-        $title = 'Список задач';
+        $title = 'Список упражнений';
         return [
             'taskList' => $tasks,
             'head' => ['title' => $title],

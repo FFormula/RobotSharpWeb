@@ -1,6 +1,6 @@
 <?php
 
-$host = 'http://localhost/';
+$host = 'http://www.robotsharp.info';
 $partner = 'videosharp';
 $apikey = 'videosharp';
 $time = time();

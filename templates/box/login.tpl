@@ -5,7 +5,11 @@
             <td><b># {$login->userId}</b></td>
         </tr>
         <tr>
-            <td class="text-right">User name:</td>
+            <td class="text-right">Token:</td>
+            <td>{$login->token}</td>
+        </tr>
+        <tr>
+            <td class="text-right">Name:</td>
             <td><b>{$login->name}</b></td>
         </tr>
         <tr>
